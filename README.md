@@ -66,6 +66,7 @@ Kiểm tra và sửa lỗi UX copy trong src/locales/vi.json, giữ nguyên toà
 ux-copy/
 |-- SKILL.md                         # Hướng dẫn điều phối chính và quy trình 2 chế độ
 |-- README.md                        # Tài liệu giới thiệu và hướng dẫn cài đặt
+|-- CHANGELOG.md                     # Nhật ký thay đổi theo chuẩn Keep a Changelog
 |-- LICENSE                          # Giấy phép MIT
 |-- .gitignore                       # Loại trừ workspace tạm, gói .skill và file OS/IDE
 |-- .gitattributes                   # Chuẩn hóa ký tự xuống dòng LF
