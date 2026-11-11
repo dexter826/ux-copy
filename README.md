@@ -16,6 +16,8 @@
 
 ## Cài đặt
 
+> Lưu ý: Repository hiện ở chế độ private; cần đăng nhập Git/GitHub CLI hoặc dùng SSH khi clone, hoặc tải trực tiếp tệp `ux-copy.skill` từ trang Releases.
+
 ### Cài qua CLI `skills`
 
 ```bash
@@ -63,13 +65,16 @@ Kiểm tra và sửa lỗi UX copy trong src/locales/vi.json, giữ nguyên toà
 ```text
 ux-copy/
 |-- SKILL.md                         # Hướng dẫn điều phối chính và quy trình 2 chế độ
+|-- README.md                        # Tài liệu giới thiệu và hướng dẫn cài đặt
+|-- LICENSE                          # Giấy phép MIT
+|-- .gitignore                       # Loại trừ workspace tạm, gói .skill và file OS/IDE
+|-- .gitattributes                   # Chuẩn hóa ký tự xuống dòng LF
 |-- references/
 |   |-- component-patterns.md        # Chi tiết 8+ mẫu thành phần UI và bảng Do's & Don'ts
 |   `-- locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
-|-- evals/
-|   |-- evals.json                   # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
-|   `-- files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx)
-`-- LICENSE
+`-- evals/
+    |-- evals.json                   # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
+    `-- files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx)
 ```
 
 ## Đóng góp

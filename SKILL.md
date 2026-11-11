@@ -11,6 +11,10 @@ description: >-
   Use this skill whenever the user writes, translates, audits, or refactors UI
   microcopy, interface text, i18n JSON strings, or JSX/TSX/HTML copy in English
   or Vietnamese.
+license: MIT
+metadata:
+  version: "1.0.0"
+  author: "dexter826"
 ---
 
 # ux-copy
