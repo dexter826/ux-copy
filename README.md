@@ -8,7 +8,7 @@
 
 ## Tính năng chính
 
-- Viết mới bộ microcopy từ đầu theo 4 ngữ cảnh giọng điệu (Success, Error, Warning, Informative) và 8 mẫu thành phần UI trong [COPY.md](./COPY.md).
+- Viết mới bộ microcopy từ đầu theo 4 ngữ cảnh giọng điệu (Success, Error, Warning, Informative) và các mẫu thành phần UI (CTA, thông báo lỗi, trạng thái trống, hộp thoại xác nhận, biểu mẫu, tooltip, tiến trình, onboarding).
 - Rà soát và sửa chuỗi giao diện có sẵn trên bảng copy, tệp JSON i18n và component JSX/TSX/HTML theo thứ tự ưu tiên từ an toàn mã nguồn đến typography.
 - Tách riêng quy chuẩn ngữ pháp và định dạng từng ngôn ngữ: Sentence Case, dấu ngoặc kép cong, dấu ba chấm đơn, loại bỏ câu bị động và định dạng ngày/số cho tiếng Việt; câu chủ động, dạng rút gọn tự nhiên và định dạng số chuẩn cho tiếng Anh.
 - Bảo toàn cấu trúc key i18n, cú pháp biến động (`{var}`, `{{var}}`, `%s`, ICU, thẻ rich-text) và dấu nháy cú pháp của mã nguồn khi chỉnh sửa trực tiếp.
@@ -63,7 +63,6 @@ Kiểm tra và sửa lỗi UX copy trong src/locales/vi.json, giữ nguyên toà
 ```text
 ux-copy/
 |-- SKILL.md                         # Hướng dẫn điều phối chính và quy trình 2 chế độ
-|-- COPY.md                          # Tài liệu quy chuẩn UX Content Standards gốc
 |-- references/
 |   |-- component-patterns.md        # Chi tiết 8+ mẫu thành phần UI và bảng Do's & Don'ts
 |   `-- locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n

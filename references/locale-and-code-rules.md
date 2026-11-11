@@ -33,7 +33,7 @@ Mục tiêu là viết tiếng Việt tự nhiên, gãy gọn như người bả
 2. **Dấu ngoặc kép:** Trong nội dung hiển thị cho người dùng, dùng đồng nhất ngoặc kép cong mở `“` (U+201C) và đóng `”` (U+201D) cho trích dẫn, tên đối tượng hoặc giá trị tham chiếu (ví dụ: `Xóa tệp “Báo cáo Q4”?`). Không trộn ngoặc thẳng `"` giữa câu tiếng Việt hiển thị. *(Xem Mục 5 để tránh đụng cú pháp code khi sửa JSON/JSX.)*
 3. **Dấu ba chấm:** Dùng ký tự ba chấm đơn `…` (U+2026) cho trạng thái chờ và đoạn lược bớt (`Đang tải…`), không gõ ba dấu chấm rời `...`.
 4. **Dấu gạch ngang:**
-   - Dùng en-dash `–` (U+2013, có khoảng trắng hai bên hoặc liền trong khoảng số tùy ngữ cảnh gọn trên badge, thống nhất một kiểu trong sản phẩm — theo `COPY.md` là có khoảng trắng hai bên: `10 – 20 mục`, `08:00 – 17:00`).
+   - Dùng en-dash `–` (U+2013, có khoảng trắng hai bên: `10 – 20 mục`, `08:00 – 17:00`, hoặc viết liền trong không gian badge chật hẹp nhưng cần thống nhất một kiểu trong toàn sản phẩm).
    - **Không dùng em-dash `—` (U+2014)** để chêm chú thích giữa câu tiếng Việt; hãy tách câu, dùng dấu phẩy hoặc ngoặc đơn cho nhịp đọc tự nhiên.
 5. **Dấu phẩy trước liên từ *và*:** Không đặt dấu phẩy trước từ *và* trong liệt kê đơn giản (`A, B và C`, không viết `A, B, và C`).
 6. **Định dạng ngày, giờ, số (`vi`):**
@@ -82,7 +82,7 @@ Khi chạy ở chế độ Audit/Refactor trên các định dạng có cấu tr
 
 ### 5.2. Bảo toàn cú pháp biến động & Rich-text i18n
 
-- Chuẩn mặc định trong spec/tài liệu mới (như `COPY.md`): `{tên_biến}` hoặc `{variable}`.
+- Chuẩn mặc định trong spec/tài liệu mới chưa gắn framework cụ thể: `{tên_biến}` hoặc `{variable}`.
 - Nhưng trong dự án thực tế, **phải giữ nguyên** cú pháp placeholder mà thư viện i18n đang dùng:
   - `i18next`: `{{count}}`, `{{name}}`
   - `react-intl` / FormatJS (ICU): `{count, plural, one {# item} other {# items}}`, `{name}`

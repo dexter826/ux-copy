@@ -7,7 +7,7 @@ description: >-
   soạn, dịch, kiểm tra hoặc sửa chữ trên giao diện — như nút bấm (CTA), thông
   báo lỗi, trạng thái trống (empty state), hộp thoại xác nhận/xóa, form
   validation, tooltip, loading/progress, onboarding, toast/banner hoặc chuỗi
-  bản địa hóa — kể cả khi họ không nhắc trực tiếp tới "UX writing" hay "COPY.md".
+  bản địa hóa — kể cả khi họ không nhắc trực tiếp tới "UX writing" hay "microcopy".
   Use this skill whenever the user writes, translates, audits, or refactors UI
   microcopy, interface text, i18n JSON strings, or JSX/TSX/HTML copy in English
   or Vietnamese.
@@ -15,7 +15,7 @@ description: >-
 
 # ux-copy
 
-Skill thiết kế, viết mới và rà soát nội dung giao diện (UX writing / microcopy) song ngữ Việt – Anh dựa trên bộ quy chuẩn trong [COPY.md](./COPY.md) và các thông lệ bản địa hóa giao diện hiện đại.
+Skill thiết kế, viết mới và rà soát nội dung giao diện (UX writing / microcopy) song ngữ Việt – Anh theo chuẩn thiết kế nội dung giao diện và thông lệ bản địa hóa sản phẩm hiện đại.
 
 Mục tiêu của microcopy chuẩn không phải là viết văn cho hay, mà là giảm tải nhận thức để người dùng hiểu ngay hệ thống đang làm gì, điều gì vừa xảy ra và bước tiếp theo cần bấm gì — không bị chựng lại bởi câu chữ mơ hồ, máy móc hay dịch sát nghĩa từ tiếng Anh.
 

@@ -1,6 +1,6 @@
 # Quy chuẩn thành phần giao diện & Bảng kiểm chất lượng
 
-Tài liệu tham chiếu chi tiết cho skill `ux-copy`, mở rộng từ [COPY.md](../COPY.md) với cặp ví dụ song ngữ Việt – Anh và xử lý các tình huống ngoại lệ thường gặp trên sản phẩm phần mềm.
+Tài liệu tham chiếu chi tiết cho skill `ux-copy`, cung cấp công thức thành phần giao diện kèm cặp ví dụ song ngữ Việt – Anh và cách xử lý các tình huống ngoại lệ thường gặp trên sản phẩm phần mềm.
 
 ---
 
@@ -116,8 +116,6 @@ Tài liệu tham chiếu chi tiết cho skill `ux-copy`, mở rộng từ [COPY.
 ---
 
 ## 8. Thông báo nổi & Banner (Toasts & Inline Alerts)
-
-*(Mở rộng thực tiễn so với COPY.md)*
 
 - **Toast:** Chỉ dùng cho phản hồi ngắn sau thao tác tức thì (`Đã sao chép liên kết` / `Link copied`, `Đã lưu vào thùng rác — Hoàn tác` / `Moved to trash — Undo`). Không nhét lỗi nghiêm trọng cần người dùng đọc kỹ hoặc điền thông tin vào toast tự tắt sau 3 giây.
 - **Inline Banner:** Dùng cho cảnh báo trạng thái hệ thống hoặc quyền lợi gắn với màn hình hiện tại (`Gói dùng thử còn 3 ngày.` / `Your trial ends in 3 days.`) kèm đúng 1 hành động chính nếu cần.
