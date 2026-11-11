@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-horizontal-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="assets/logo-horizontal-light.svg" />
-    <img alt="ux-copy" src="assets/logo-horizontal-light.svg" width="360" />
+    <img alt="ux-copy" src="assets/logo-horizontal-light.svg" width="420" />
   </picture>
 </p>
 
@@ -15,7 +15,7 @@
 
 # ux-copy
 
-`ux-copy` là Agent Skill phục vụ viết mới, rà soát và tái cấu trúc nội dung giao diện (UX writing và microcopy) bằng tiếng Việt và tiếng Anh trên văn bản thuần, Markdown, JSON i18n và mã nguồn UI (JSX/TSX/HTML).
+`ux-copy` là Agent Skill viết mới, rà soát và tái cấu trúc nội dung giao diện (UX writing và microcopy) bằng tiếng Việt và tiếng Anh trên văn bản thuần, Markdown, JSON i18n và mã nguồn UI (JSX/TSX/HTML).
 
 ## Tính năng chính
 
@@ -26,47 +26,59 @@
 - Bảo toàn cấu trúc key i18n, cú pháp biến động (`{var}`, `{{var}}`, `%s`, ICU, thẻ rich-text), props và dấu nháy cú pháp khi chỉnh sửa trực tiếp; không tự ý xóa key i18n hoặc thẻ component ngoài ranh giới an toàn.
 - Cung cấp bộ tiêu chí và mẫu đầu vào kiểm thử trong `evals/` để đánh giá lại chất lượng skill sau khi cập nhật.
 
-## Mục lục
+## Chế độ làm việc
 
-- [Tính năng chính](#tính-năng-chính)
-- [Cài đặt](#cài-đặt)
-- [Cách sử dụng](#cách-sử-dụng)
-- [Đóng góp](#đóng-góp)
-- [Giấy phép](#giấy-phép)
-
-## Cài đặt
-
-### Cài qua CLI `skills`
-
-```bash
-npx skills add dexter826/ux-copy
-```
-
-### Cài thủ công bằng Git
-
-Sao chép repository vào thư mục skills của agent (global cho mọi dự án hoặc local theo dự án):
-
-```bash
-# Global cross-agent (~/.agents/skills)
-git clone https://github.com/dexter826/ux-copy.git ~/.agents/skills/ux-copy
-
-# Global Antigravity (~/.gemini/config/skills)
-git clone https://github.com/dexter826/ux-copy.git ~/.gemini/config/skills/ux-copy
-
-# Project-local (trong thư mục gốc dự án của bạn)
-git clone https://github.com/dexter826/ux-copy.git .agents/skills/ux-copy
-```
-
-## Cách sử dụng
-
-Skill tự kích hoạt khi bạn yêu cầu viết, dịch, kiểm tra hoặc sửa chữ giao diện, nút bấm, thông báo lỗi, trạng thái trống, hộp thoại xác nhận, biểu mẫu, tooltip hoặc tệp i18n. Bạn cũng có thể gọi trực tiếp `/ux-copy` kèm ngữ cảnh hoặc tệp mục tiêu.
-
-### Hai chế độ làm việc
+Tương thích với các coding agent hỗ trợ chuẩn AgentSkills.
 
 | Chế độ | Đầu vào thường gặp | Đầu ra |
 | :--- | :--- | :--- |
 | **Viết mới (Draft)** | Mô tả màn hình, luồng thao tác, loại thông báo | Bộ microcopy nhóm theo thành phần kèm biến động `{...}` |
 | **Rà soát & Sửa (Audit)** | Văn bản, Markdown, JSON i18n, tệp JSX/TSX/HTML | Bảng đối chiếu Trước/Sau hoặc tệp đã sửa giữ nguyên cú pháp |
+
+## Cài đặt
+
+### Qua Skills CLI (Khuyên dùng)
+
+Cài trực tiếp từ GitHub qua [`skills`](https://skills.sh/).
+
+Cài theo dự án:
+
+```bash
+npx skills add dexter826/ux-copy
+```
+
+Cài global (không hỏi xác nhận):
+
+```bash
+npx skills add dexter826/ux-copy -g -y
+```
+
+### Cài thủ công bằng Git
+
+Sao chép repository vào thư mục skills của agent để thư mục có tên `ux-copy`.
+
+Global trên Unix/macOS (`~/.agents/skills`):
+
+```bash
+mkdir -p ~/.agents/skills && git clone https://github.com/dexter826/ux-copy.git ~/.agents/skills/ux-copy
+```
+
+Theo dự án trên Unix/macOS (`.agents/skills`):
+
+```bash
+mkdir -p .agents/skills && git clone https://github.com/dexter826/ux-copy.git .agents/skills/ux-copy
+```
+
+Global trên Windows PowerShell (`$HOME\.agents\skills`):
+
+```powershell
+New-Item -ItemType Directory -Force -Path "$HOME\.agents\skills" | Out-Null
+git clone https://github.com/dexter826/ux-copy.git "$HOME\.agents\skills\ux-copy"
+```
+
+## Cách sử dụng
+
+Skill tự kích hoạt khi bạn yêu cầu viết, dịch, kiểm tra hoặc sửa chữ giao diện, nút bấm, thông báo lỗi, trạng thái trống, hộp thoại xác nhận, biểu mẫu, tooltip hoặc tệp i18n. Bạn cũng có thể gọi trực tiếp `/ux-copy` kèm ngữ cảnh hoặc tệp mục tiêu.
 
 ### Ví dụ prompt
 
@@ -82,25 +94,21 @@ Kiểm tra và sửa lỗi UX copy trong src/locales/vi.json, giữ nguyên toà
 
 ```text
 ux-copy/
-|-- SKILL.md                         # Hướng dẫn điều phối chính và quy trình 2 chế độ
-|-- README.md                        # Tài liệu giới thiệu và hướng dẫn cài đặt
-|-- CHANGELOG.md                     # Nhật ký thay đổi theo chuẩn Keep a Changelog
-|-- LICENSE                          # Giấy phép MIT
-|-- .gitignore                       # Loại trừ workspace tạm, gói .skill và file OS/IDE
-|-- .gitattributes                   # Chuẩn hóa ký tự xuống dòng LF
-|-- assets/                          # Logo SVG tối giản cho theme sáng và tối
-|-- references/
-|   |-- component-patterns.md        # Chi tiết 8+ mẫu thành phần UI và bảng Do's & Don'ts
-|   `-- locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
-`-- evals/
-    |-- evals.json                   # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
-    `-- files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx, BillingSettingsCard.tsx)
+├── SKILL.md                         # Hướng dẫn điều phối chính và quy trình 2 chế độ
+├── README.md                        # Tài liệu giới thiệu và hướng dẫn cài đặt
+├── CHANGELOG.md                     # Nhật ký thay đổi theo chuẩn Keep a Changelog
+├── LICENSE                          # Giấy phép MIT
+├── .gitignore                       # Loại trừ workspace tạm, gói .skill và file OS/IDE
+├── .gitattributes                   # Chuẩn hóa ký tự xuống dòng LF
+├── assets/                          # Logo SVG tối giản cho theme sáng và tối
+├── references/
+│   ├── component-patterns.md        # Chi tiết 8+ mẫu thành phần UI và bảng Do's & Don'ts
+│   └── locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
+└── evals/
+    ├── evals.json                   # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
+    └── files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx, BillingSettingsCard.tsx)
 ```
-
-## Đóng góp
-
-Mọi đóng góp cho quy chuẩn nội dung, bộ ví dụ song ngữ hoặc kịch bản kiểm thử trong `evals/` đều được hoan nghênh qua Pull Request. Sau khi chỉnh sửa `SKILL.md`, kiểm tra lại frontmatter bằng `quick_validate.py` từ `skill-creator`.
 
 ## Giấy phép
 
-Phân phối theo giấy phép [MIT](./LICENSE).
+Phân phối theo giấy phép [MIT](LICENSE).
