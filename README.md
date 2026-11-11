@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="SKILL.md"><img src="https://img.shields.io/badge/standard-AgentSkill-00cc5c?style=flat-square&labelColor=0a0a0a" alt="standard: AgentSkill" /></a>
-  <a href="references/locale-and-code-rules.md"><img src="https://img.shields.io/badge/languages-VI%20%7C%20EN-00cc5c?style=flat-square&labelColor=0a0a0a" alt="languages: VI | EN" /></a>
+  <a href="skills/ux-copy/SKILL.md"><img src="https://img.shields.io/badge/standard-AgentSkill-00cc5c?style=flat-square&labelColor=0a0a0a" alt="standard: AgentSkill" /></a>
+  <a href="skills/ux-copy/references/locale-and-code-rules.md"><img src="https://img.shields.io/badge/languages-VI%20%7C%20EN-00cc5c?style=flat-square&labelColor=0a0a0a" alt="languages: VI | EN" /></a>
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-00cc5c?style=flat-square&labelColor=0a0a0a" alt="version: 1.1.0" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-00cc5c?style=flat-square&labelColor=0a0a0a" alt="license: MIT" /></a>
 </p>
@@ -55,25 +55,30 @@ npx skills add dexter826/ux-copy -g -y
 
 ### Cài thủ công bằng Git
 
-Sao chép repository vào thư mục skills của agent để thư mục có tên `ux-copy`.
+Sao chép thư mục `skills/ux-copy` vào thư mục skills của agent để chỉ cài phần runtime (`SKILL.md` và `references/`), không kéo theo `README.md`, `assets/` hay `evals/`.
 
 Global trên Unix/macOS (`~/.agents/skills`):
 
 ```bash
-mkdir -p ~/.agents/skills && git clone https://github.com/dexter826/ux-copy.git ~/.agents/skills/ux-copy
+tmp=$(mktemp -d) && git clone --depth 1 https://github.com/dexter826/ux-copy.git "$tmp" && mkdir -p ~/.agents/skills && rm -rf ~/.agents/skills/ux-copy && cp -R "$tmp/skills/ux-copy" ~/.agents/skills/ux-copy && rm -rf "$tmp"
 ```
 
 Theo dự án trên Unix/macOS (`.agents/skills`):
 
 ```bash
-mkdir -p .agents/skills && git clone https://github.com/dexter826/ux-copy.git .agents/skills/ux-copy
+tmp=$(mktemp -d) && git clone --depth 1 https://github.com/dexter826/ux-copy.git "$tmp" && mkdir -p .agents/skills && rm -rf .agents/skills/ux-copy && cp -R "$tmp/skills/ux-copy" .agents/skills/ux-copy && rm -rf "$tmp"
 ```
 
 Global trên Windows PowerShell (`$HOME\.agents\skills`):
 
 ```powershell
+$tmp = Join-Path $env:TEMP "ux-copy-repo"
+Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue
+git clone --depth 1 https://github.com/dexter826/ux-copy.git $tmp
 New-Item -ItemType Directory -Force -Path "$HOME\.agents\skills" | Out-Null
-git clone https://github.com/dexter826/ux-copy.git "$HOME\.agents\skills\ux-copy"
+Remove-Item -Recurse -Force "$HOME\.agents\skills\ux-copy" -ErrorAction SilentlyContinue
+Copy-Item -Recurse "$tmp\skills\ux-copy" "$HOME\.agents\skills\ux-copy"
+Remove-Item -Recurse -Force $tmp
 ```
 
 ## Cách sử dụng
@@ -94,19 +99,25 @@ Kiểm tra và sửa lỗi UX copy trong src/locales/vi.json, giữ nguyên toà
 
 ```text
 ux-copy/
-├── SKILL.md                         # Hướng dẫn điều phối chính và quy trình 2 chế độ
-├── README.md                        # Tài liệu giới thiệu và hướng dẫn cài đặt
-├── CHANGELOG.md                     # Nhật ký thay đổi theo chuẩn Keep a Changelog
-├── LICENSE                          # Giấy phép MIT
-├── .gitignore                       # Loại trừ workspace tạm, gói .skill và file OS/IDE
-├── .gitattributes                   # Chuẩn hóa ký tự xuống dòng LF
-├── assets/                          # Logo SVG tối giản cho theme sáng và tối
-├── references/
-│   ├── component-patterns.md        # Chi tiết 8+ mẫu thành phần UI và bảng Do's & Don'ts
-│   └── locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
+├── skills/
+│   └── ux-copy/                         # Payload runtime cài đặt qua npx skills add
+│       ├── SKILL.md                     # Hướng dẫn điều phối chính và quy trình 2 chế độ
+│       └── references/
+│           ├── component-patterns.md    # Chi tiết 12 mục mẫu UI, cleanup, a11y và Do's & Don'ts
+│           └── locale-and-code-rules.md # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
+├── README.md                            # Tài liệu giới thiệu và hướng dẫn cài đặt
+├── CHANGELOG.md                         # Nhật ký thay đổi theo chuẩn Keep a Changelog
+├── LICENSE                              # Giấy phép MIT
+├── .gitignore                           # Loại trừ workspace tạm, gói .skill và file OS/IDE
+├── .gitattributes                       # Chuẩn hóa ký tự xuống dòng LF
+├── assets/                              # Bộ logo Quote Exchange SVG (theme sáng/tối)
+│   ├── logo-light.svg
+│   ├── logo-dark.svg
+│   ├── logo-horizontal-light.svg
+│   └── logo-horizontal-dark.svg
 └── evals/
-    ├── evals.json                   # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
-    └── files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx, BillingSettingsCard.tsx)
+    ├── evals.json                       # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
+    └── files/                           # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx, BillingSettingsCard.tsx)
 ```
 
 ## Giấy phép
