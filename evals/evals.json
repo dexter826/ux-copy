@@ -1,0 +1,51 @@
+{
+  "skill_name": "ux-copy",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Tôi đang làm màn hình quản lý thẻ thanh toán (Payment Method) cho app SaaS dùng cả tiếng Việt và tiếng Anh. Hãy viết giúp bộ microcopy song ngữ hoàn chỉnh (bản VI và bản EN) cho: 1) Trạng thái trống khi chưa có thẻ nào, 2) Hộp thoại xác nhận xóa thẻ đang lưu (hành động không thể hoàn tác), 3) Lỗi lưu thẻ khi thẻ hết hạn hoặc mất kết nối mạng, 4) Trạng thái đang xử lý khi lưu thẻ. Xuất kết quả thành file payment-copy.md để đội dev và design dùng chung.",
+      "expected_output": "File payment-copy.md có đầy đủ microcopy song ngữ VI/EN cho 4 trạng thái, tuân thủ công thức thành phần (Empty state 3 bước, Destructive dialog đích danh + nút Keep/Delete & Giữ lại/Xóa, Error 3 phần, Loading có dấu …), và đúng chuẩn typography riêng từng ngôn ngữ.",
+      "files": [],
+      "expectations": [
+        "Creates payment-copy.md containing both Vietnamese (VI) and English (EN) copy for all 4 requested UI states (empty state, destructive delete dialog, save error states, loading state).",
+        "Vietnamese empty state follows the 3-step formula (status title, value/purpose description, action-verb CTA) and uses Sentence Case without English-style Title Case.",
+        "Destructive delete dialog uses a specific action-oriented title naming the card/payment method, states permanent consequences, and pairs a safe action label (Giữ lại... / Keep...) with an explicit destructive verb+object label (Xóa thẻ... / Delete card...).",
+        "Error messages cover both expired card and network disconnection with the 3-part pattern (what happened, brief reason, next action/recovery) without blaming the user.",
+        "Vietnamese copy uses single-character ellipsis … (U+2026) instead of ..., avoids em-dash — (U+2014), and avoids an Oxford comma before và.",
+        "English copy uses natural English UI conventions without leaking Vietnamese locale formatting or awkward literal translations."
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Kiểm tra và sửa lại file JSON i18n tiếng Việt trong file đính kèm (vi.json) cho chuẩn UX copy, nhớ giữ nguyên toàn bộ cấu trúc key JSON và biến {{...}} để không hỏng code i18next của team. Xuất file vi.fixed.json đã sửa và một bản audit-report.md giải thích các chỗ sửa.",
+      "expected_output": "File vi.fixed.json hợp lệ cú pháp JSON, giữ nguyên tất cả key và biến {{projectName}}/{{count}}, khắc phục các lỗi văn phong bị động/danh hóa/cụm 'của'/khung dẫn rỗng, chuẩn hóa thành phần UI và chuẩn typography tiếng Việt (Sentence Case, ngoặc kép cong, …, không em-dash, không dấu phẩy trước 'và', 0,5 / 1.000.000 / DD/MM/YYYY), kèm audit-report.md đối chiếu trước/sau.",
+      "files": [
+        "evals/files/vi.json"
+      ],
+      "expectations": [
+        "vi.fixed.json is valid UTF-8 JSON and preserves the exact key structure and nesting of the original vi.json.",
+        "Preserves all i18next interpolation placeholders ({{projectName}} and {{count}}) intact without converting them to single braces.",
+        "Fixes Vietnamese grammar issues: removes passive voice, empty nominalizations, redundant của chains, and hollow intro framing.",
+        "Fixes UI component patterns: replaces vague labels (OK, Hủy bỏ, Đồng ý, Bạn có chắc chắn không?) and blunt error with specific action labels, targeted delete confirmation, 3-part error, and measured toast copy.",
+        "Fixes Vietnamese typography and locale formatting: Sentence Case titles, … (U+2026), no em-dash —, no Oxford comma before và, curly quotes “ ” inside UI text, and 0,5 / 1.000.000 / 30/11/2026.",
+        "audit-report.md documents before/after comparisons with clear rationale for the changes."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review và refactor phần chữ giao diện tiếng Anh trong component React đính kèm (WorkspaceDangerModal.tsx) cho tự nhiên, rõ ràng, đúng chuẩn UX copy mà vẫn giữ nguyên logic, props và cú pháp TypeScript/JSX để build chạy bình thường. Lưu file đã sửa thành WorkspaceDangerModal.tsx và tóm tắt thay đổi vào summary.md.",
+      "expected_output": "File WorkspaceDangerModal.tsx giữ nguyên logic, props, {...rest} spread, comment TODO và cú pháp JSX hợp lệ; viết lại phần text tiếng Anh theo chuẩn UX copy (Sentence case, câu chủ động ngắn, modal title & nút xác nhận đích danh Delete workspace / Keep workspace, inline error rõ điều kiện, loading …, toast vừa phải, tooltip bổ sung giá trị thay vì lặp label hoặc bỏ tooltip thừa, label độc lập cho input thay vì chỉ có placeholder).",
+      "files": [
+        "evals/files/WorkspaceDangerModal.tsx"
+      ],
+      "expectations": [
+        "WorkspaceDangerModal.tsx preserves all TypeScript interfaces, component props, {...rest} spread syntax, event handlers, and valid TSX syntax.",
+        "Replaces vague modal title (Are You Sure?) and vague buttons (Cancel / Yes) with specific destructive confirmation copy naming the workspace (Delete ...?, safe Keep/Cancel label + Delete workspace label).",
+        "Improves form copy: adds an independent label (not relying solely on placeholder) and replaces Invalid input! with an actionable inline error explaining the exact missing condition.",
+        "Replaces Error 500: Operation failed. with a calm 3-part user-facing error message and tones down Awesome! ...!!! into measured Success copy.",
+        "Improves or removes the redundant tooltip (title=Delete Workspace) and avoids leaking Vietnamese locale conventions into English UI copy.",
+        "summary.md clearly summarizes the UX copy improvements and code-safety decisions."
+      ]
+    }
+  ]
+}

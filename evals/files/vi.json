@@ -1,0 +1,26 @@
+{
+  "workspace": {
+    "pageTitle": "Quản Lý Không Gian Làm Việc Của Bạn",
+    "emptyTitle": "Không có dữ liệu",
+    "emptyDescription": "Hiện tại chưa có dự án nào được tạo bởi bạn trong hệ thống.",
+    "createCta": "OK",
+    "syncStatus": "Đang tiến hành việc đồng bộ dữ liệu...",
+    "quotaNotice": "Bạn đã dùng 0.5 GB trong tổng số 1,000,000 KB dung lượng — hãy cân nhắc nâng cấp trước ngày 2026-11-30.",
+    "featuresSummary": "Hỗ trợ xuất báo cáo, phân quyền nhóm, và lưu trữ tự động."
+  },
+  "deleteModal": {
+    "title": "Bạn có chắc chắn không?",
+    "description": "Các dữ liệu của dự án \"{{projectName}}\" sẽ bị xóa bởi hệ thống.",
+    "cancelBtn": "Hủy bỏ",
+    "confirmBtn": "Đồng ý"
+  },
+  "errors": {
+    "saveFailed": "Lỗi hệ thống! Thao tác thất bại.",
+    "invalidPassword": "Mật khẩu của bạn sai.",
+    "welcomeBanner": "Điều quan trọng cần lưu ý là bạn cần thực hiện việc xác minh email để tiếp tục."
+  },
+  "toast": {
+    "saved": "Tuyệt vời! Bạn đã lưu các thay đổi thành công!",
+    "deletedCount": "Đã xóa {{count}} mục thành công!"
+  }
+}
