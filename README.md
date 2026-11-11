@@ -24,8 +24,6 @@
 
 ## Cài đặt
 
-> Lưu ý: Repository hiện ở chế độ private; cần đăng nhập Git/GitHub CLI hoặc dùng SSH khi clone, hoặc tải trực tiếp tệp `ux-copy.skill` từ trang Releases.
-
 ### Cài qua CLI `skills`
 
 ```bash
