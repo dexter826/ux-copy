@@ -1,18 +1,19 @@
-<div align="center">
+<p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/logo-light.svg">
-    <img src="assets/logo-light.svg" alt="Logo ux-copy" width="108">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-horizontal-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/logo-horizontal-light.svg" />
+    <img alt="ux-copy" src="assets/logo-horizontal-light.svg" width="360" />
   </picture>
+</p>
 
-  <h1>ux-copy</h1>
+<p align="center">
+  <a href="SKILL.md"><img src="https://img.shields.io/badge/standard-AgentSkill-00cc5c?style=flat-square&labelColor=0a0a0a" alt="standard: AgentSkill" /></a>
+  <a href="references/locale-and-code-rules.md"><img src="https://img.shields.io/badge/languages-VI%20%7C%20EN-00cc5c?style=flat-square&labelColor=0a0a0a" alt="languages: VI | EN" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-00cc5c?style=flat-square&labelColor=0a0a0a" alt="version: 1.1.0" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-00cc5c?style=flat-square&labelColor=0a0a0a" alt="license: MIT" /></a>
+</p>
 
-  <p>
-    <img src="https://img.shields.io/badge/Agent_Skill-SKILL.md-blue" alt="Agent Skill">
-    <img src="https://img.shields.io/badge/Languages-VI%20%7C%20EN-green" alt="Bilingual">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
-  </p>
-</div>
+# ux-copy
 
 `ux-copy` là Agent Skill phục vụ viết mới, rà soát và tái cấu trúc nội dung giao diện (UX writing và microcopy) bằng tiếng Việt và tiếng Anh trên văn bản thuần, Markdown, JSON i18n và mã nguồn UI (JSX/TSX/HTML).
 
