@@ -80,7 +80,7 @@ Khi chạy ở chế độ Audit/Refactor trên các định dạng có cấu tr
 - **Không bao giờ** thay dấu ba chấm trong spread syntax (`{...props}`), rest parameter (`...args`) hay TypeScript tuple thành ký tự `…`.
 - **Lưu ý escape & linter dự án:** Trong JSON dùng ngoặc kép thẳng bọc ngoài, ngoặc kép cong `“` `”` đặt *bên trong* chuỗi JSON hoàn toàn hợp lệ UTF-8 (`"confirmTitle": "Xóa dự án “{name}”?"`). Tuy nhiên, nếu dự án có quy tắc ESLint/Biome cấm non-ASCII punctuation hoặc dùng sẵn dấu nháy escape `\"`, ưu tiên giữ tương thích với quy ước của codebase và ghi chú lại.
 
-### 5.2. Bảo toàn cú pháp biến động & Rich-text i18n
+### 5.2. Bảo toàn cú pháp biến động, Rich-text & Cấm ghép chuỗi i18n
 
 - Chuẩn mặc định trong spec/tài liệu mới chưa gắn framework cụ thể: `{tên_biến}` hoặc `{variable}`.
 - Nhưng trong dự án thực tế, **phải giữ nguyên** cú pháp placeholder mà thư viện i18n đang dùng:
@@ -89,8 +89,19 @@ Khi chạy ở chế độ Audit/Refactor trên các định dạng có cấu tr
   - `printf` / backend template: `%s`, `%d`, `${name}`
   - Rich text component tags: `<bold>...</bold>`, `<1>...</1>`
 - Khi sửa câu chữ, kiểm tra kỹ để không làm rơi, đổi tên hoặc hỏng cặp thẻ đóng/mở của biến.
+- **Không ghép mảnh chuỗi động trong code (String Concatenation):**
+  - Tránh nối từng mảnh bằng `+` hoặc nội suy tách rời kiểu `"Found " + count + " unpaid invoice(s)"` hay `{"Đã tìm thấy " + count + " hóa đơn"}`. Cách viết này khiến trật tự câu gãy khi chuyển giữa tiếng Anh và tiếng Việt, không chia được dạng số ít/số nhiều (`plural`) và tạo chuỗi nửa vời khó dịch.
+  - Khi gặp phép nối chuỗi cứng trong TSX/JSX, chuyển về một câu hoàn chỉnh tự nhiên (hoặc template literal nguyên câu / đề xuất tách key i18n dùng `{count, plural, ...}` trong phần tóm tắt mà vẫn tôn trọng prop TypeScript đang có).
 
-### 5.3. Tách biệt thông điệp người dùng và dữ liệu kỹ thuật
+### 5.3. Tách biệt thông điệp người dùng, Cleanup an toàn & Dữ liệu kỹ thuật
 
-- Không đổi tên **key** trong JSON i18n (`"err_network_timeout"` vẫn giữ nguyên key, chỉ sửa giá trị text đi kèm) trừ khi người dùng yêu cầu tái cấu trúc key.
-- Không xóa tên biến/props/comment TODO kỹ thuật trong file code nếu chúng phục vụ logic ứng dụng; chỉ xóa bình luận nội bộ nếu nó vô tình bị render trực tiếp thành text trên giao diện người dùng.
+Phân định rạch ròi phần được phép tự xóa khi rà soát với phần chỉ nên đề xuất để không làm hỏng runtime hoặc lệch bản dịch khác:
+
+- **Được tự xóa trực tiếp trong bản copy/code:**
+  - Hư từ, câu mào đầu rỗng và chỉ dẫn thừa trong chuỗi văn bản/Markdown.
+  - Thuộc tính văn bản dư thuần giao diện không ảnh hưởng logic hoặc props (ví dụ gỡ `title="..."` chỉ lặp lại đúng nhãn chữ của `<button>`).
+  - Ghi chú dev, số phiên bản nội bộ (`Updated in v2.4`) hay lời bình hội thoại vô tình bị render trực tiếp lên giao diện người dùng.
+- **Chỉ liệt kê vào mục Đề xuất dọn dẹp (không tự ý xóa mặc định):**
+  - **Key JSON i18n** nghi trùng nghĩa hoặc không còn dùng (`unused keys`) — tránh làm gãy dynamic lookup kiểu `t('status.' + code)` hoặc lệch với `en.json` / `vi.json`.
+  - **Props / TypeScript interface / comment `TODO:` kỹ thuật** phục vụ logic, telemetry hoặc hợp đồng giữa các component.
+  - **Tháo bỏ cả khối JSX/component** (như xóa hẳn thẻ `<p>` có điều kiện, bố cục grid hoặc thay modal xác nhận bằng toast Undo) — trừ khi người dùng yêu cầu sửa cấu trúc component trực tiếp.

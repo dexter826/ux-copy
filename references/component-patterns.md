@@ -129,7 +129,45 @@ Tài liệu tham chiếu chi tiết cho skill `ux-copy`, cung cấp công thức
 
 ---
 
-## 10. Bảng kiểm nhanh Do's & Don'ts
+## 10. Microcopy cho Trợ năng (Accessibility Microcopy)
+
+Nội dung giao diện cần đọc hiểu tốt bằng trình đọc màn hình (`screen reader`) khi tách khỏi ngữ cảnh thị giác:
+
+1. **Nút chỉ có biểu tượng (`icon-only button`):** Bắt buộc có `aria-label` (hoặc tooltip định danh rõ hành động theo mẫu `[Động từ + Đối tượng]` như `Làm mới danh sách hóa đơn` / `Refresh invoice list`), tránh nhãn vô nghĩa như `button`, `icon`, `action`.
+2. **Văn bản thay thế ảnh (`alt` text):**
+   - Ảnh mang thông tin (biểu đồ, ảnh chụp màn hình hướng dẫn, xem trước hóa đơn): mô tả ngắn nội dung hoặc kết quả thay vì mở đầu thừa bằng *"Hình ảnh của…"* / *"Image of…"*.
+   - Ảnh hoặc icon trang trí đi kèm nhãn chữ đã rõ: giữ `alt=""` (hoặc `aria-hidden="true"` tùy cấu trúc hiện có của component) để trình đọc màn hình không đọc lặp hai lần.
+3. **Liên kết (`link text`):** Nhãn liên kết phải tự mang đủ nghĩa khi người dùng nhảy qua danh sách liên kết:
+   - Tránh: `Bấm vào đây`, `Xem thêm` | `Click here`, `Read more`
+   - Chuẩn: `Xem lịch sử thanh toán`, `Tìm hiểu về thuế VAT` | `View billing history`, `Compare team plans`
+
+---
+
+## 11. Dọn dẹp copy thừa & Kiểm soát độ dài (Cleanup & Text Expansion)
+
+### 11.1. Đánh giá xóa bỏ trước khi viết lại (Subtract Before Rewriting)
+
+Trước khi sửa câu chữ một đoạn microcopy yếu, kiểm tra xem thành phần đó có đang dư thừa không. Có **5 trường hợp nên cắt bỏ** (ghi `[Xóa bỏ]` / `[Remove]` trong bảng Audit):
+
+| Dấu hiệu thừa | Ví dụ dư thừa | Cách xử lý chuẩn |
+| :--- | :--- | :--- |
+| **Subtitle lặp lại Heading** | Heading: `Cài đặt thanh toán` + Subtitle: `Quản lý cài đặt thanh toán của bạn tại đây.` | `[Xóa bỏ]` subtitle, chỉ giữ nếu có thông tin bổ sung thật (ví dụ chu kỳ gia hạn). |
+| **Helper text lặp Label/Placeholder** | Label: `Email nhận hóa đơn` + Helper: `Nhập địa chỉ email để nhận hóa đơn.` | `[Xóa bỏ]` helper thừa; chỉ giữ helper khi cần ràng buộc định dạng hoặc quyền riêng tư. |
+| **Tooltip trùng nhãn nút có chữ** | `<button title="Xuất PDF">Xuất PDF</button>` | Gỡ thuộc tính `title` lặp chữ (chỉ giữ tooltip khi nút không có chữ hoặc bổ sung phím tắt/hệ quả). |
+| **Chỉ dẫn thao tác cơ học hiển nhiên** | `Nhấn nút Lưu bên dưới để lưu thông tin.` | `[Xóa bỏ]` câu chỉ dẫn vị trí nút; bản thân CTA đã tự giải thích. |
+| **Modal xác nhận cho việc dễ hoàn tác** | Bật modal hỏi xác nhận khi lưu trữ ghi chú hoặc bỏ ghim | Đề xuất bỏ modal, thực hiện trực tiếp kèm toast `Đã lưu trữ — Hoàn tác` / `Archived — Undo`. |
+
+### 11.2. Giới hạn độ dài & Độ phình chữ Việt – Anh (Text Expansion)
+
+Tiếng Việt có dấu và cụm từ ghép thường dài hơn tiếng Anh tương ứng ở cùng mật độ ý. Khi viết hoặc dịch cho không gian hẹp (**nút CTA, tab điều hướng, badge, tiêu đề cột bảng, dropdown hẹp**):
+
+- Ưu tiên giữ cặp `[Động từ + Đối tượng cốt lõi]` súc tích hoặc danh từ ngắn rõ nghĩa thay vì dịch đủ từng từ tính từ/bổ ngữ từ tiếng Anh.
+- Tránh để CSS cắt cụt (`text-overflow: ellipsis`) làm mất động từ khóa hoặc đối tượng phân biệt giữa hai nút cạnh nhau (ví dụ hai tab đều bị cắt thành `Thanh toán hàng…`).
+- Khi chỉnh sửa trong JSX/TSX, nếu nhãn chuẩn vẫn có nguy cơ tràn khung hẹp đang gắn sẵn (`w-24`, `max-w-*`), ưu tiên rút gọn copy nhất quán và ghi chú kiểm tra hiển thị.
+
+---
+
+## 12. Bảng kiểm nhanh Do's & Don'ts
 
 | Nên làm (Do) | Không nên làm (Don't) |
 | :--- | :--- |
@@ -141,5 +179,8 @@ Tài liệu tham chiếu chi tiết cho skill `ux-copy`, cung cấp công thức
 | Viết câu chủ động, gọn, đúng văn phong bản địa của từng ngôn ngữ. | Không dịch word-by-word cấu trúc bị động tiếng Anh sang tiếng Việt. |
 | Dùng Sentence Case cho tiêu đề UI tiếng Việt (và mặc định khuyến nghị cho tiếng Anh). | Không áp dụng Title Case (viết hoa chữ đầu mọi từ) lên tiếng Việt. |
 | Dùng Undo cho thao tác có thể khôi phục thay vì chặn bằng modal. | Không bật hộp thoại xác nhận cho mọi thao tác thường nhật. |
+| Cắt bỏ subtitle, helper text và `title` tooltip chỉ lặp lại nhãn hiển nhiên. | Không cố viết lại cho hay những đoạn copy vốn không cần tồn tại. |
+| Đặt `aria-label` cho icon button, `alt` đúng ngữ cảnh và link text tự mang nghĩa. | Không dùng nhãn link rời như `Bấm vào đây` / `Click here` hoặc `alt="Image of…"`. |
+| Rút gọn copy cho nút, tab và badge hẹp để tránh tràn hoặc cắt mất từ khóa. | Không dịch bám chữ khiến nút/tab tiếng Việt quá dài bị `…` cắt cụt. |
 | Giữ nguyên 1 thuật ngữ duy nhất cho 1 khái niệm trên cả sản phẩm. | Không đổi từ đồng nghĩa tùy hứng giữa các màn hình. |
 | Viết trực tiếp cho người dùng cuối. | Không để lọt ghi chú dev, nhật ký cập nhật hay câu trao đổi nội bộ lên UI. |

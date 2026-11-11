@@ -46,6 +46,22 @@
         "Improves or removes the redundant tooltip (title=Delete Workspace) and avoids leaking Vietnamese locale conventions into English UI copy.",
         "summary.md clearly summarizes the UX copy improvements and code-safety decisions."
       ]
+    },
+    {
+      "id": 3,
+      "prompt": "Rà soát và tối ưu UI copy trong component đính kèm (BillingSettingsCard.tsx) trên tinh thần giữ an toàn code: dọn dẹp copy thừa, bổ sung/sửa accessibility microcopy, xử lý chuỗi ghép động theo chuẩn i18n và rút gọn nhãn cho nút có độ rộng hẹp (w-28 truncate), đồng thời gợi ý thêm nhãn tiếng Việt tương ứng cho nút hẹp đó trong báo cáo. Xuất file code đã sửa thành BillingSettingsCard.tsx (giữ nguyên interface, props, ...rest, comment TODO kỹ thuật và không tự ý xóa các thẻ HTML/JSX có layout class) kèm audit-report.md giải thích các mục sửa, [Xóa bỏ] và đề xuất dọn dẹp.",
+      "expected_output": "File BillingSettingsCard.tsx hợp lệ TSX, giữ nguyên props/...rest/TODO kỹ thuật; gỡ title lặp nhãn (Export invoices), thay hoặc gắn cờ dọn câu lặp/debug nội bộ, sửa aria-label icon button, làm sạch alt text (bao gồm alt='' cho ảnh trang trí), sửa link text có nghĩa thay 'Click here', bỏ ghép chuỗi '+' sang template/ICU plural an toàn, sửa nút 'Submit' và rút gọn nhãn nút w-28. audit-report.md có bảng 4 cột dùng [Xóa bỏ]/[Remove] cho subtitle/helper/hint/debug thừa, mục Đề xuất dọn dẹp thẻ JSX và nhãn tiếng Việt gọn cho nút hẹp.",
+      "files": [
+        "evals/files/BillingSettingsCard.tsx"
+      ],
+      "expectations": [
+        "BillingSettingsCard.tsx preserves TypeScript interface BillingSettingsCardProps, all props, {...rest} spread syntax, and the technical // TODO comment intact.",
+        "Removes redundant title='Export invoices' on the Export invoices button and removes or flags internal debug/build text ('Updated in build v2.4.1') without leaving it visible to end users.",
+        "Fixes accessibility microcopy: sets an action-oriented aria-label on the icon-only refresh button (replacing 'button'), cleans '/invoice-sample.png' alt text by removing 'Image of', sets empty alt='' on decorative '/decor-wave.svg', and replaces 'Click here' with descriptive link text.",
+        "Replaces fragmented '+' string concatenation and '(s)' pluralization on unpaidCount with a cohesive message or recommends proper i18n plural extraction without breaking TSX props.",
+        "Replaces vague 'Submit' CTA and shortens the narrow 'w-28 truncate' button label to fit a narrow width, and audit-report.md also provides a concise Vietnamese equivalent that fits narrow UI.",
+        "audit-report.md marks redundant copy (repeating subtitle, helper text, mechanical hint) with [Xóa bỏ] or [Remove] in the 4-column table and lists structural JSX element removals under cleanup proposals instead of blindly deleting styled layout nodes."
+      ]
     }
   ]
 }
