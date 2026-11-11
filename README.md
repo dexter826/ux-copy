@@ -1,16 +1,18 @@
-<p align="left">
+<div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/logo-light.svg">
-    <img src="assets/logo-light.svg" alt="Logo ux-copy" width="96">
+    <img src="assets/logo-light.svg" alt="Logo ux-copy" width="108">
   </picture>
-</p>
 
-# ux-copy
+  <h1>ux-copy</h1>
 
-![Agent Skill](https://img.shields.io/badge/Agent_Skill-SKILL.md-blue)
-![Bilingual](https://img.shields.io/badge/Languages-VI%20%7C%20EN-green)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+  <p>
+    <img src="https://img.shields.io/badge/Agent_Skill-SKILL.md-blue" alt="Agent Skill">
+    <img src="https://img.shields.io/badge/Languages-VI%20%7C%20EN-green" alt="Bilingual">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </p>
+</div>
 
 `ux-copy` là Agent Skill phục vụ viết mới, rà soát và tái cấu trúc nội dung giao diện (UX writing và microcopy) bằng tiếng Việt và tiếng Anh trên văn bản thuần, Markdown, JSON i18n và mã nguồn UI (JSX/TSX/HTML).
 
