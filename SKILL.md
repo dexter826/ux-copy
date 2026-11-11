@@ -1,19 +1,20 @@
 ---
 name: ux-copy
 description: >-
-  Viết mới, rà soát và chuẩn hóa nội dung giao diện (UX writing và microcopy)
-  cho cả tiếng Việt lẫn tiếng Anh trên văn bản thuần, Markdown, JSON i18n và
-  mã nguồn UI (JSX/TSX/HTML). Hãy dùng skill này bất cứ khi nào người dùng
-  soạn, dịch, kiểm tra hoặc sửa chữ trên giao diện — như nút bấm (CTA), thông
-  báo lỗi, trạng thái trống (empty state), hộp thoại xác nhận/xóa, form
-  validation, tooltip, loading/progress, onboarding, toast/banner hoặc chuỗi
-  bản địa hóa — kể cả khi họ không nhắc trực tiếp tới "UX writing" hay "microcopy".
-  Use this skill whenever the user writes, translates, audits, or refactors UI
-  microcopy, interface text, i18n JSON strings, or JSX/TSX/HTML copy in English
-  or Vietnamese.
+  Viết mới, rà soát, chuẩn hóa và dọn dẹp nội dung giao diện thừa (UX writing,
+  microcopy và accessibility microcopy) cho cả tiếng Việt lẫn tiếng Anh trên văn
+  bản thuần, Markdown, JSON i18n và mã nguồn UI (JSX/TSX/HTML). Hãy dùng skill
+  này bất cứ khi nào người dùng soạn, dịch, kiểm tra, tinh giản hoặc sửa chữ
+  trên giao diện — như nút bấm (CTA), thông báo lỗi, trạng thái trống (empty
+  state), hộp thoại xác nhận/xóa, form validation, tooltip, `aria-label`/`alt`,
+  loading/progress, onboarding, toast/banner hoặc chuỗi bản địa hóa — kể cả khi
+  họ không nhắc trực tiếp tới "UX writing" hay "microcopy".
+  Use this skill whenever the user writes, translates, audits, cleans up, or
+  refactors UI microcopy, interface text, accessibility copy, i18n JSON strings,
+  or JSX/TSX/HTML copy in English or Vietnamese.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "dexter826"
 ---
 
@@ -44,8 +45,8 @@ Trước khi viết hoặc sửa, xác định rõ ngữ cảnh ngôn ngữ mụ
 
 1. **Đọc toàn bộ tệp trước khi sửa:** Nhận diện khung i18n (`{var}`, `{{var}}`, `%s`, ICU, `<Trans>`), quy ước dấu nháy của codebase và ngôn ngữ của từng chuỗi (`vi` hay `en`) để tránh áp nhầm chuẩn tiếng Việt lên chuỗi tiếng Anh và ngược lại.
 2. **Rà soát theo 4 tầng ưu tiên:**
-   - **Tầng 1 – An toàn mã nguồn & i18n:** Giữ nguyên tên key, props, cú pháp biểu thức, placeholder biến và mã lỗi nội bộ (nếu dùng cho log/hỗ trợ).
-   - **Tầng 2 – Cấu trúc thành phần & hành động:** Khắc phục nút mơ hồ, lỗi cụt lủn thiếu hướng xử lý, modal xóa hỏi chung chung, empty state cụt đường.
+   - **Tầng 1 – An toàn mã nguồn & i18n:** Giữ nguyên tên key, props, cú pháp biểu thức, placeholder biến và mã lỗi nội bộ (nếu dùng cho log/hỗ trợ); tránh ghép mảnh chuỗi động trong code; chỉ tự xóa thuộc tính text thừa an toàn, không tự xóa key i18n hay cả cụm component.
+   - **Tầng 2 – Cấu trúc, tinh giản & Accessibility:** Đánh giá *xóa bỏ trước khi viết lại (Subtract Before Rewriting)* để cắt chữ/chỉ dẫn/tooltip lặp thừa; khắc phục nút mơ hồ, lỗi cụt lủn, modal xóa hỏi chung chung, empty state cụt đường; bổ sung `aria-label`/nhãn liên kết có nghĩa và giữ độ dài vừa không gian hẹp.
    - **Tầng 3 – Ngữ pháp & giọng điệu:** Đưa về thể chủ động, khử danh hóa nặng nề, bỏ khung dẫn sáo rỗng, chỉnh đúng sắc thái theo ngữ cảnh.
    - **Tầng 4 – Typography & định dạng locale:** Chuẩn hóa Sentence Case, dấu ba chấm `…`, ngoặc kép, dấu gạch ngang, ngày/giờ và phân cách số đúng ngôn ngữ hiển thị.
 3. **Đọc tài liệu chuyên sâu khi đụng code hoặc locale:** Đọc [references/locale-and-code-rules.md](./references/locale-and-code-rules.md) trước khi chỉnh sửa file JSX/TSX/JSON i18n hoặc kiểm tra typography.
@@ -102,8 +103,9 @@ Chi tiết đầy đủ nằm ở [references/locale-and-code-rules.md](./refere
    - Tiếng Việt ưu tiên câu chủ động, bỏ khung dẫn sáo rỗng, khử danh hóa rỗng (*thực hiện cấu hình* → *cấu hình*), Sentence Case (không Title Case kiểu Anh), ngoặc kép cong `“` `”`, ba chấm đơn `…`, en-dash `–`, **tránh em-dash `—`**, không dấu phẩy trước *và*, định dạng `DD/MM/YYYY`, `HH:mm`, `1.000.000`, `0,5`.
    - Tiếng Anh ưu tiên câu chủ động ngắn, Sentence case hiện đại, contraction tự nhiên (*Couldn't*, *You're*) khi giọng văn thân thiện, dấu câu và số/ngày theo chuẩn tiếng Anh (`1,000.00`, `0.5`, `MMM D, YYYY` hoặc `YYYY-MM-DD`). Không ép định dạng `0,5` hay `DD/MM/YYYY` lên UI tiếng Anh.
 2. **Tuyệt đối không phá cú pháp code:** Không đổi dấu nháy của cú pháp JS/TS/JSON/HTML (`"`, `'`, `` ` ``) thành `“` `”`, và không đổi spread operator `...` trong code thành `…`. Chỉ chuẩn hóa typography bên trong phần chữ hiển thị cho người dùng (và tôn trọng escape JSON/ESLint của dự án).
-3. **Bảo toàn biến & thẻ i18n sẵn có:** Nếu dự án đang dùng `{{count}}`, `{count, plural, ...}`, `%s` hoặc `<Link>...</Link>`, giữ nguyên định dạng biến đó. Chỉ dùng cú pháp `{tên_biến}` / `{variable}` khi viết mới chưa gắn framework cụ thể.
-4. **Không đưa nội dung nội bộ ra giao diện:** Loại bỏ ghi chú dev, nhật ký thay đổi, lời bình hội thoại hay từ khóa kỹ thuật thô khỏi chuỗi UI.
+3. **Bảo toàn biến, thẻ i18n & không ghép chuỗi:** Nếu dự án đang dùng `{{count}}`, `{count, plural, ...}`, `%s` hoặc `<Link>...</Link>`, giữ nguyên định dạng biến đó; khi viết mới chưa gắn framework thì dùng `{tên_biến}` / `{variable}`. Tuyệt đối không ghép mảnh câu bằng `+` hoặc nội suy tách rời kiểu `"Có " + n + " mục"` làm gãy trật tự từ và hỏng số ít/nhiều khi dịch.
+4. **Không đưa nội dung nội bộ ra giao diện & dọn dẹp an toàn:** Loại bỏ ghi chú dev, nhật ký thay đổi, lời bình hội thoại hay từ khóa kỹ thuật thô bị render lên UI. Trong file code/copy, được phép bỏ chuỗi hoặc thuộc tính text dư thuần giao diện (như `title` lặp nhãn nút có chữ), nhưng chỉ **đề xuất** chứ không tự xóa key JSON i18n hay cả thẻ component JSX trừ khi người dùng yêu cầu rõ.
+5. **Accessibility & Kiểm soát độ dài UI:** Bổ sung `aria-label` dạng `[Động từ + Đối tượng]` cho icon button, dùng `alt=""` cho ảnh trang trí, đặt nhãn liên kết tự mang ngữ nghĩa (tránh *Bấm vào đây*), và giữ nhãn ngắn gọn cho nút/tab/badge hẹp vì tiếng Việt thường dài hơn tiếng Anh.
 
 ---
 
@@ -114,12 +116,14 @@ Chi tiết đầy đủ nằm ở [references/locale-and-code-rules.md](./refere
 - **Khi viết mới (Draft Mode):** Nhóm theo màn hình hoặc thành phần (`Tiêu đề`, `Mô tả`, `CTA chính`, `CTA phụ`, `Lỗi`), nêu rõ tên biến `{...}` và ghi chú nhanh giả định nếu có (ví dụ: giả sử hành động không thể hoàn tác).
 - **Khi rà soát văn bản/bảng copy:** Xuất bảng đối chiếu 4 cột:
   `Vị trí | Bản gốc | Bản đề xuất | Lý do & quy tắc áp dụng`
-- **Khi sửa trực tiếp file code / JSON i18n:** Chỉnh trực tiếp file đích, kiểm tra lại tính hợp lệ cú pháp (ví dụ parse JSON / kiểm tra thẻ JSX không bị vỡ), rồi tóm tắt các nhóm thay đổi kèm danh sách thuật ngữ cần team thống nhất (nếu phát hiện lệch thuật ngữ).
+  *(Nếu chuỗi dư thừa nên bỏ hẳn thay vì viết lại, ghi rõ `[Xóa bỏ]` hoặc `[Remove]` ở cột **Bản đề xuất**.)*
+- **Khi sửa trực tiếp file code / JSON i18n:** Chỉnh trực tiếp file đích, kiểm tra lại tính hợp lệ cú pháp (ví dụ parse JSON / kiểm tra thẻ JSX không bị vỡ), rồi tóm tắt các nhóm thay đổi kèm hai danh sách (nếu phát hiện): thuật ngữ cần thống nhất và **đề xuất dọn dẹp** (key i18n trùng/không dùng, chuỗi nối cần dev tách key hoặc component/modal nên gỡ).
 
 ### Danh sách tự kiểm trước khi trả kết quả
 
 - [ ] Ngôn ngữ (`vi` / `en`) có dùng đúng chuẩn ngữ pháp, typography và định dạng số/ngày của riêng ngôn ngữ đó không?
-- [ ] Các nút bấm và hộp thoại xác nhận có nêu đích danh hành động thay vì chữ chung chung (`OK`, `Hủy`, `Bạn có chắc không?`) chưa?
+- [ ] Đã loại bỏ (hoặc đề xuất `[Xóa bỏ]`) các câu chữ lặp tiêu đề/nhãn, chỉ dẫn thao tác hiển nhiên và thuộc tính `title` thừa chưa?
+- [ ] Các nút bấm, hộp thoại xác nhận, `aria-label` (icon button) và nhãn liên kết có nêu rõ hành động/đích đến thay vì chữ chung chung không?
 - [ ] Thông báo lỗi có đủ hiện trạng + lý do ngắn (nếu biết) + hướng xử lý mà không đổ lỗi người dùng chưa?
-- [ ] Toàn bộ thuật ngữ cho cùng một khái niệm đã thống nhất xuyên suốt các chuỗi chưa?
-- [ ] Khi sửa file code hoặc i18n JSON, cấu trúc key, biến động (`{...}`, `{{...}}`) và cú pháp quote/JSX có còn nguyên vẹn hợp lệ không?
+- [ ] Toàn bộ thuật ngữ nhất quán, độ dài nhãn vừa cho nút/tab hẹp khi chuyển giữa `en` và `vi` chưa?
+- [ ] Khi sửa code hoặc i18n JSON, cấu trúc key, props, biến động, cặp thẻ JSX có còn hợp lệ và tránh nối chuỗi thủ công không?

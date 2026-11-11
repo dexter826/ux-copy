@@ -19,9 +19,10 @@
 ## Tính năng chính
 
 - Viết mới bộ microcopy từ đầu theo 4 ngữ cảnh giọng điệu (Success, Error, Warning, Informative) và các mẫu thành phần UI (CTA, thông báo lỗi, trạng thái trống, hộp thoại xác nhận, biểu mẫu, tooltip, tiến trình, onboarding).
-- Rà soát và sửa chuỗi giao diện có sẵn trên bảng copy, tệp JSON i18n và component JSX/TSX/HTML theo thứ tự ưu tiên từ an toàn mã nguồn đến typography.
+- Rà soát, dọn dẹp copy thừa (Subtract Before Rewriting) và sửa chuỗi giao diện có sẵn trên bảng copy, tệp JSON i18n và component JSX/TSX/HTML theo thứ tự ưu tiên từ an toàn mã nguồn đến typography.
 - Tách riêng quy chuẩn ngữ pháp và định dạng từng ngôn ngữ: Sentence Case, dấu ngoặc kép cong, dấu ba chấm đơn, loại bỏ câu bị động và định dạng ngày/số cho tiếng Việt; câu chủ động, dạng rút gọn tự nhiên và định dạng số chuẩn cho tiếng Anh.
-- Bảo toàn cấu trúc key i18n, cú pháp biến động (`{var}`, `{{var}}`, `%s`, ICU, thẻ rich-text) và dấu nháy cú pháp của mã nguồn khi chỉnh sửa trực tiếp.
+- Kiểm tra microcopy trợ năng (`aria-label`, `alt`, nhãn liên kết có nghĩa), tránh nối chuỗi i18n trong code và cân chỉnh độ dài nhãn khi dịch sang tiếng Việt cho nút/tab hẹp.
+- Bảo toàn cấu trúc key i18n, cú pháp biến động (`{var}`, `{{var}}`, `%s`, ICU, thẻ rich-text), props và dấu nháy cú pháp khi chỉnh sửa trực tiếp; không tự ý xóa key i18n hoặc thẻ component ngoài ranh giới an toàn.
 - Cung cấp bộ tiêu chí và mẫu đầu vào kiểm thử trong `evals/` để đánh giá lại chất lượng skill sau khi cập nhật.
 
 ## Mục lục
@@ -92,7 +93,7 @@ ux-copy/
 |   `-- locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
 `-- evals/
     |-- evals.json                   # Kịch bản kiểm thử và tiêu chí đánh giá (assertions)
-    `-- files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx)
+    `-- files/                       # Tệp mẫu đầu vào (vi.json, WorkspaceDangerModal.tsx, BillingSettingsCard.tsx)
 ```
 
 ## Đóng góp
