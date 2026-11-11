@@ -14,6 +14,14 @@
 - Bảo toàn cấu trúc key i18n, cú pháp biến động (`{var}`, `{{var}}`, `%s`, ICU, thẻ rich-text) và dấu nháy cú pháp của mã nguồn khi chỉnh sửa trực tiếp.
 - Cung cấp bộ tiêu chí và mẫu đầu vào kiểm thử trong `evals/` để đánh giá lại chất lượng skill sau khi cập nhật.
 
+## Mục lục
+
+- [Tính năng chính](#tính-năng-chính)
+- [Cài đặt](#cài-đặt)
+- [Cách sử dụng](#cách-sử-dụng)
+- [Đóng góp](#đóng-góp)
+- [Giấy phép](#giấy-phép)
+
 ## Cài đặt
 
 > Lưu ý: Repository hiện ở chế độ private; cần đăng nhập Git/GitHub CLI hoặc dùng SSH khi clone, hoặc tải trực tiếp tệp `ux-copy.skill` từ trang Releases.
