@@ -1,3 +1,11 @@
+<p align="left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/logo-light.svg">
+    <img src="assets/logo-light.svg" alt="Logo ux-copy" width="96">
+  </picture>
+</p>
+
 # ux-copy
 
 ![Agent Skill](https://img.shields.io/badge/Agent_Skill-SKILL.md-blue)
@@ -76,6 +84,7 @@ ux-copy/
 |-- LICENSE                          # Giấy phép MIT
 |-- .gitignore                       # Loại trừ workspace tạm, gói .skill và file OS/IDE
 |-- .gitattributes                   # Chuẩn hóa ký tự xuống dòng LF
+|-- assets/                          # Logo SVG tối giản cho theme sáng và tối
 |-- references/
 |   |-- component-patterns.md        # Chi tiết 8+ mẫu thành phần UI và bảng Do's & Don'ts
 |   `-- locale-and-code-rules.md     # Quy chuẩn tiếng Việt, tiếng Anh và an toàn mã nguồn/i18n
