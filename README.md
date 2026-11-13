@@ -37,6 +37,30 @@ Tương thích với các coding agent hỗ trợ chuẩn AgentSkills.
 
 ## Cài đặt
 
+### Qua Plugin Marketplace (Claude Code, Codex, Antigravity)
+
+Cài plugin trực tiếp từ repository này:
+
+Claude Code:
+
+```text
+/plugin marketplace add dexter826/ux-copy
+/plugin install ux-copy@ux-copy
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add dexter826/ux-copy
+codex plugin add ux-copy@ux-copy
+```
+
+Antigravity:
+
+```bash
+agy plugin install https://github.com/dexter826/ux-copy
+```
+
 ### Qua Skills CLI (Khuyên dùng)
 
 Cài trực tiếp từ GitHub qua [`skills`](https://skills.sh/).
@@ -110,6 +134,15 @@ ux-copy/
 ├── LICENSE                              # Giấy phép MIT
 ├── .gitignore                           # Loại trừ workspace tạm, gói .skill và file OS/IDE
 ├── .gitattributes                       # Chuẩn hóa ký tự xuống dòng LF
+├── plugin.json                          # Manifest plugin dạng portable cho Codex
+├── .claude-plugin/
+│   ├── plugin.json                      # Manifest plugin cho Claude Code
+│   └── marketplace.json                 # Catalog marketplace cho Claude Code
+├── .antigravity-plugin/
+│   └── plugin.json                      # Manifest plugin cho Antigravity
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json             # Catalog marketplace cho Codex
 ├── assets/                              # Bộ logo Quote Exchange SVG (theme sáng/tối)
 │   ├── logo-light.svg
 │   ├── logo-dark.svg

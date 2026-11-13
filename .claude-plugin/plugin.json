@@ -1,0 +1,10 @@
+{
+  "name": "ux-copy",
+  "version": "1.1.0",
+  "description": "Viết mới, rà soát và sửa microcopy giao diện song ngữ VI/EN trên Markdown, JSON i18n và mã nguồn UI, bảo toàn key i18n và trợ năng.",
+  "author": {
+    "name": "dexter826"
+  },
+  "license": "MIT",
+  "skills": "./skills"
+}

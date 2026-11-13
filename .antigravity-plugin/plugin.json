@@ -1,0 +1,27 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "ux-copy",
+  "displayName": "UX Copy",
+  "version": "1.1.0",
+  "description": "Viết mới, rà soát và sửa microcopy giao diện song ngữ VI/EN trên Markdown, JSON i18n và mã nguồn UI, bảo toàn key i18n và trợ năng.",
+  "author": {
+    "name": "dexter826",
+    "url": "https://github.com/dexter826"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/dexter826/ux-copy",
+  "homepage": "https://github.com/dexter826/ux-copy",
+  "keywords": [
+    "ux-writing",
+    "microcopy",
+    "i18n",
+    "vietnamese",
+    "accessibility"
+  ],
+  "logo": "assets/logo-light.svg",
+  "suggestedPrompts": [
+    "Viết microcopy song ngữ VI/EN cho hộp thoại xác nhận",
+    "Kiểm tra và sửa UX copy trong tệp JSON i18n",
+    "Dọn dẹp copy thừa trên màn hình cài đặt"
+  ]
+}

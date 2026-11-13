@@ -4,6 +4,12 @@ Tất cả thay đổi đáng chú ý của dự án được ghi lại trong t�
 
 Định dạng tuân theo [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) và quy ước phiên bản [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Thêm mới
+
+- Bộ manifest phân phối dạng plugin (`plugin.json`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`, `.antigravity-plugin/plugin.json`) cho phép cài trực tiếp repository như một plugin trên Claude Code, Codex và Antigravity, kèm section cài đặt mới trong `README.md`.
+
 ## [1.1.0] - 2026-11-11
 
 ### Thêm mới
