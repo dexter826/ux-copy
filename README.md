@@ -17,6 +17,10 @@
 
 `ux-copy` là Agent Skill viết mới, rà soát và tái cấu trúc nội dung giao diện (UX writing và microcopy) bằng tiếng Việt và tiếng Anh trên văn bản thuần, Markdown, JSON i18n và mã nguồn UI (JSX/TSX/HTML).
 
+## Cách hoạt động
+
+https://github.com/user-attachments/assets/c1a917e3-4d5f-4976-b0be-fdb43f229162
+
 ## Tính năng chính
 
 - Viết mới bộ microcopy từ đầu theo 4 ngữ cảnh giọng điệu (Success, Error, Warning, Informative) và các mẫu thành phần UI (CTA, thông báo lỗi, trạng thái trống, hộp thoại xác nhận, biểu mẫu, tooltip, tiến trình, onboarding).
