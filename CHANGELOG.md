@@ -4,11 +4,24 @@ Tất cả thay đổi đáng chú ý của dự án được ghi lại trong t�
 
 Định dạng tuân theo [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) và quy ước phiên bản [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.2.0] - 2026-11-24
 
 ### Thêm mới
 
 - Bộ manifest phân phối dạng plugin (`plugin.json`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`, `.antigravity-plugin/plugin.json`) cho phép cài trực tiếp repository như một plugin trên Claude Code, Codex và Antigravity, kèm section cài đặt mới trong `README.md`.
+- Rule **ICU plural tiếng Việt**: bản `vi` chỉ cần nhánh `other`, không copy nhánh `one` từ bản `en` ([locale-and-code-rules.md](./skills/ux-copy/references/locale-and-code-rules.md)).
+- **Ngân sách độ dài mềm** cho thành phần hẹp: nút/tab ≤ 20 ký tự (tab hẹp ≤ 12), toast 1 dòng, tooltip ≤ 2 câu, tiêu đề empty state ≤ 50 ký tự ([component-patterns.md](./skills/ux-copy/references/component-patterns.md)).
+- Caveat **brand voice** trong [SKILL.md](./skills/ux-copy/SKILL.md): bảng Voice & Tone là mặc định, sản phẩm có giọng nói riêng thì ưu tiên theo đó.
+- Caveat **chống over-correction khi audit tiếng Việt**: codebase đã nhất quán một kiểu typography thì đề xuất chuyển cả sản phẩm, không tự sửa lẻ từng chuỗi ([locale-and-code-rules.md](./skills/ux-copy/references/locale-and-code-rules.md)).
+- Hỗ trợ tùy chọn **`ui-glossary.json`** ở thư mục gốc project: Draft/Audit đối chiếu ánh xạ thuật ngữ để giữ nhất quán xuyên phiên làm việc.
+- Đưa `designs/` vào `.gitignore` của repository.
+
+### Thay đổi
+
+- Sửa 2 ví dụ toast tiếng Việt dùng em-dash trong [component-patterns.md](./skills/ux-copy/references/component-patterns.md) — chuyển sang dấu chấm kết câu + nút `Hoàn tác` riêng, khớp lại quy tắc "tránh em-dash" trong tiếng Việt của chính skill.
+- Nới rule nút verb-only: nhãn `Đăng ký` hợp lệ khi đối tượng đã hiển nhiên từ ngữ cảnh màn hình ([component-patterns.md](./skills/ux-copy/references/component-patterns.md)).
+- Loại bỏ tên dự án ngoài "Quote Exchange" khỏi sơ đồ tệp trong [README.md](./README.md).
+- Nâng version lên 1.2.0 trong [SKILL.md](./skills/ux-copy/SKILL.md) và toàn bộ manifest phân phối.
 
 ## [1.1.0] - 2026-11-11
 

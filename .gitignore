@@ -14,3 +14,6 @@ desktop.ini
 .vscode/
 .idea/
 .env
+
+# Local design/preview workspace (promo builds) - not published
+designs/
