@@ -9,7 +9,7 @@
 <p align="center">
   <a href="skills/ux-copy/SKILL.md"><img src="https://img.shields.io/badge/standard-AgentSkill-00cc5c?style=flat-square&labelColor=0a0a0a" alt="standard: AgentSkill" /></a>
   <a href="skills/ux-copy/references/locale-and-code-rules.md"><img src="https://img.shields.io/badge/languages-VI%20%7C%20EN-00cc5c?style=flat-square&labelColor=0a0a0a" alt="languages: VI | EN" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-00cc5c?style=flat-square&labelColor=0a0a0a" alt="version: 1.1.0" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.2.0-00cc5c?style=flat-square&labelColor=0a0a0a" alt="version: 1.2.0" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-00cc5c?style=flat-square&labelColor=0a0a0a" alt="license: MIT" /></a>
 </p>
 
@@ -26,6 +26,7 @@ https://github.com/user-attachments/assets/c1a917e3-4d5f-4976-b0be-fdb43f229162
 - Kiểm tra microcopy trợ năng (`aria-label`, `alt`, nhãn liên kết có nghĩa), tránh nối chuỗi i18n trong code và cân chỉnh độ dài nhãn khi dịch sang tiếng Việt cho nút/tab hẹp.
 - Bảo toàn cấu trúc key i18n, cú pháp biến động (`{var}`, `{{var}}`, `%s`, ICU, thẻ rich-text), props và dấu nháy cú pháp khi chỉnh sửa trực tiếp; không tự ý xóa key i18n hoặc thẻ component ngoài ranh giới an toàn.
 - Cung cấp bộ tiêu chí và mẫu đầu vào kiểm thử trong `evals/` để đánh giá lại chất lượng skill sau khi cập nhật.
+- Đối chiếu thuật ngữ qua file `ui-glossary.json` tùy chọn ở thư mục gốc project, giữ ánh xạ thuật ngữ nhất quán xuyên suốt các phiên làm việc (từ v1.2.0).
 
 ## Chế độ làm việc
 
@@ -144,7 +145,7 @@ ux-copy/
 ├── .agents/
 │   └── plugins/
 │       └── marketplace.json             # Catalog marketplace cho Codex
-├── assets/                              # Bộ logo Quote Exchange SVG (theme sáng/tối)
+├── assets/                              # Bộ logo ux-copy SVG (theme sáng/tối)
 │   ├── logo-light.svg
 │   ├── logo-dark.svg
 │   ├── logo-horizontal-light.svg

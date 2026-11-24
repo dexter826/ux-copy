@@ -40,6 +40,7 @@ Mục tiêu là viết tiếng Việt tự nhiên, gãy gọn như người bả
    - Ngày tháng: `DD/MM/YYYY` (ví dụ `11/11/2026`) hoặc `D tháng M, YYYY` (`11 tháng 11, 2026`).
    - Giờ giấc 24 giờ: `HH:mm` (`14:30`).
    - Phân cách phần nghìn dùng dấu chấm (`1.000.000`), phần thập phân dùng dấu phẩy (`0,5`).
+7. **Tôn trọng quy ước typography codebase nếu đã nhất quán:** Nếu repo đang áp dụng nhất quán một kiểu khác trên toàn sản phẩm (ví dụ ngoặc thẳng `\"` mọi nơi, hoặc em-dash thống nhất cho toast), đừng tự sửa lẻ từng chuỗi — một kiểu dùng đều còn dễ đọc hơn hai kiểu trộn. Gộp các chỗ lệch chuẩn thành một đề xuất chuyển cả sản phẩm trong tóm tắt để đội ngũ chốt một lần. Chỉ áp chuẩn từng chuỗi rời rạc nếu product chưa có quy ước nào hoặc đang trộn lẫn tùy hứng.
 
 ---
 
@@ -65,6 +66,9 @@ Khi làm việc trên cả bản `en` và `vi` (ví dụ `en.json` và `vi.json`
 
 - Ví dụ lỗi hay gặp: Cùng từ `Workspace` nhưng màn hình A dịch *Không gian làm việc*, màn hình B dịch *Nhóm*, màn hình C để nguyên *Workspace*.
 - **Cách xử lý khi audit:** Lập nhanh danh sách thuật ngữ cốt lõi của sản phẩm (ví dụ `Project` ↔ `Dự án`, `Workspace` ↔ `Không gian làm việc`, `Archive` ↔ `Lưu trữ`, `Delete` ↔ `Xóa`). Nếu thấy file đang dùng lẫn lộn, chọn phương án thống nhất đa số hoặc hợp ngữ cảnh nhất, đồng thời liệt kê rõ cho người dùng xác nhận ở phần tóm tắt.
+- **Đối chiếu `ui-glossary.json` của project (nếu có):** Trước khi viết hoặc rà soát, tìm file `ui-glossary.json` ở thư mục gốc project, cấu trúc dạng `{"Workspace": "Không gian làm việc", "Delete": "Xóa"}` (key `en` → value `vi`).
+  - Nếu file tồn tại: mọi bản viết/đề xuất phải theo ánh xạ đó; chỗ mâu thuẫn với file thì giữ quy ước của file và đánh dấu vào tóm tắt để team chốt lại.
+  - Nếu chưa có file mà audit phát hiện thiếu nhất quán: kèm theo đề xuất tạo `ui-glossary.json` chứa danh sách thuật ngữ đã chốt trong phần Đề xuất dọn dẹp, để các lần chạy sau thống nhất không cần chấm lại từ đầu.
 
 ---
 
@@ -88,6 +92,7 @@ Khi chạy ở chế độ Audit/Refactor trên các định dạng có cấu tr
   - `react-intl` / FormatJS (ICU): `{count, plural, one {# item} other {# items}}`, `{name}`
   - `printf` / backend template: `%s`, `%d`, `${name}`
   - Rich text component tags: `<bold>...</bold>`, `<1>...</1>`
+  - **Số nhiều tiếng Việt chỉ cần nhánh `other`:** Danh từ tiếng Việt không biến hình theo số nhiều, nên bản `vi` dùng duy nhất nhánh `other` (`{count, plural, other {# hóa đơn}}`). Không copy nhánh `one` từ bản `en` sang bản dịch tiếng Việt — nhánh thừa gây rối khi bảo dưỡng mà không phục vụ gì.
 - Khi sửa câu chữ, kiểm tra kỹ để không làm rơi, đổi tên hoặc hỏng cặp thẻ đóng/mở của biến.
 - **Không ghép mảnh chuỗi động trong code (String Concatenation):**
   - Tránh nối từng mảnh bằng `+` hoặc nội suy tách rời kiểu `"Found " + count + " unpaid invoice(s)"` hay `{"Đã tìm thấy " + count + " hóa đơn"}`. Cách viết này khiến trật tự câu gãy khi chuyển giữa tiếng Anh và tiếng Việt, không chia được dạng số ít/số nhiều (`plural`) và tạo chuỗi nửa vời khó dịch.

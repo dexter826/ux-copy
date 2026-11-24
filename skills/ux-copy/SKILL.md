@@ -14,7 +14,7 @@ description: >-
   or JSX/TSX/HTML copy in English or Vietnamese.
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: "dexter826"
 ---
 
@@ -37,7 +37,7 @@ Trước khi viết hoặc sửa, xác định rõ ngữ cảnh ngôn ngữ mụ
 1. **Xác định thông số đầu vào:** Ngôn ngữ đích (`vi` / `en`), thành phần UI (nút, lỗi, modal, form, empty state…), ngữ cảnh cảm xúc (Success / Error / Warning / Informative) và khả năng hoàn tác.
 2. **Không tự bịa hành vi hệ thống:** Nếu thiếu nguyên nhân lỗi, phạm vi dữ liệu bị ảnh hưởng hay khả năng hoàn tác, giữ phần chưa xác định dưới dạng `{placeholder}` kèm ghi chú ngắn để đội ngũ sản phẩm chốt.
 3. **Áp dụng đúng công thức thành phần & quy chuẩn ngôn ngữ:** Đối chiếu bảng bên dưới; đọc thêm [references/component-patterns.md](./references/component-patterns.md) khi cần mẫu chi tiết.
-4. **Kiểm tra chéo song ngữ (nếu xuất cả `vi` và `en`):** Đảm bảo hai bản khớp cùng một thuật ngữ, cùng mức độ khẩn trương nhưng tự nhiên theo ngữ pháp bản địa — không dịch word-by-word.
+4. **Kiểm tra chéo song ngữ (nếu xuất cả `vi` và `en`):** Đảm bảo hai bản khớp cùng một thuật ngữ, cùng mức độ khẩn trương nhưng tự nhiên theo ngữ pháp bản địa — không dịch word-by-word. Nếu project có file `ui-glossary.json` ở thư mục gốc thì đối chiếu và theo ánh xạ thuật ngữ đó.
 
 ### 2. Chế độ rà soát & sửa (Audit & Refactor Mode)
 
@@ -47,7 +47,7 @@ Trước khi viết hoặc sửa, xác định rõ ngữ cảnh ngôn ngữ mụ
 2. **Rà soát theo 4 tầng ưu tiên:**
    - **Tầng 1 – An toàn mã nguồn & i18n:** Giữ nguyên tên key, props, cú pháp biểu thức, placeholder biến và mã lỗi nội bộ (nếu dùng cho log/hỗ trợ); tránh ghép mảnh chuỗi động trong code; chỉ tự xóa thuộc tính text thừa an toàn, không tự xóa key i18n hay cả cụm component.
    - **Tầng 2 – Cấu trúc, tinh giản & Accessibility:** Đánh giá *xóa bỏ trước khi viết lại (Subtract Before Rewriting)* để cắt chữ/chỉ dẫn/tooltip lặp thừa; khắc phục nút mơ hồ, lỗi cụt lủn, modal xóa hỏi chung chung, empty state cụt đường; bổ sung `aria-label`/nhãn liên kết có nghĩa và giữ độ dài vừa không gian hẹp.
-   - **Tầng 3 – Ngữ pháp & giọng điệu:** Đưa về thể chủ động, khử danh hóa nặng nề, bỏ khung dẫn sáo rỗng, chỉnh đúng sắc thái theo ngữ cảnh.
+   - **Tầng 3 – Ngữ pháp & giọng điệu:** Đưa về thể chủ động, khử danh hóa nặng nề, bỏ khung dẫn sáo rỗng, chỉnh đúng sắc thái theo ngữ cảnh; đối chiếu `ui-glossary.json` của project (nếu có) để giữ thuật ngữ thống nhất.
    - **Tầng 4 – Typography & định dạng locale:** Chuẩn hóa Sentence Case, dấu ba chấm `…`, ngoặc kép, dấu gạch ngang, ngày/giờ và phân cách số đúng ngôn ngữ hiển thị.
 3. **Đọc tài liệu chuyên sâu khi đụng code hoặc locale:** Đọc [references/locale-and-code-rules.md](./references/locale-and-code-rules.md) trước khi chỉnh sửa file JSX/TSX/JSON i18n hoặc kiểm tra typography.
 
@@ -67,7 +67,7 @@ Mọi văn bản hiển thị cho người dùng cuối cần đáp ứng đồn
 
 ## Giọng điệu theo ngữ cảnh (Voice & Tone)
 
-Giữ giọng chung chuyên nghiệp, điềm đạm và đáng tin cậy; điều chỉnh sắc thái theo tình huống trải nghiệm:
+Bảng dưới là giọng mặc định cho sản phẩm chưa định nghĩa brand voice. Nếu sản phẩm đã có giọng nói/tone map riêng (playful, hướng trẻ em, game…), ưu tiên theo đó và chỉ mượn cấu trúc sắc thái theo ngữ cảnh:
 
 | Ngữ cảnh | Sắc thái | Quy tắc viết | Ví dụ chuẩn (`vi` / `en`) |
 | :--- | :--- | :--- | :--- |

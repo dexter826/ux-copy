@@ -12,11 +12,12 @@ Tài liệu tham chiếu chi tiết cho skill `ux-copy`, cung cấp công thức
   - Bắt đầu trực tiếp bằng động từ hành động.
   - Phản ánh chính xác trạng thái sau khi bấm.
   - Nút đóng hoặc từ bỏ luồng nên nói rõ hành động an toàn (`Giữ lại tệp` / `Keep file`, `Đóng` / `Close`, `Quay lại` / `Go back`) thay vì `Hủy` / `Cancel` khi từ *Hủy* dễ gây nhầm với *Hủy đơn hàng* hoặc *Hủy đăng ký*.
+  - **Nút verb-only khi đối tượng hiển nhiên:** Nhãn một động từ (`Đăng ký`, `Lưu`, `Tải lên`) chấp nhận được khi ngữ cảnh màn hình đã làm rõ đối tượng của hành động (màn hình đăng ký, form lưu cấu hình). Nếu đủ không gian, vẫn ưu tiên đủ cặp `[Động từ + Đối tượng]` để nút tự giải thích khi quét nhanh.
   - **Ngoại lệ có kiểm soát:** Trong wizard nhiều bước mà tiêu đề bước đã định rõ ngữ cảnh, có thể dùng `Tiếp tục` / `Continue` hoặc `Tiếp theo` / `Next` nếu ghép `[Động từ + Đối tượng]` làm nút quá dài, nhưng vẫn ưu tiên nhãn cụ thể hơn khi đủ chỗ (`Tiếp tục thanh toán` / `Continue to payment`).
 
 | Ngôn ngữ | Tránh (Chưa đạt) | Chuẩn (Nên dùng) |
 | :--- | :--- | :--- |
-| `vi` | `OK`, `Gửi`, `Đồng ý`, `Đăng ký` | `Lưu thay đổi`, `Gửi lời mời`, `Tạo tài khoản` |
+| `vi` | `OK`, `Gửi`, `Đồng ý` | `Lưu thay đổi`, `Gửi lời mời`, `Tạo tài khoản`, `Đăng ký tài khoản` |
 | `en` | `OK`, `Submit`, `Yes`, `Click here` | `Save changes`, `Send invite`, `Create account` |
 
 ---
@@ -117,7 +118,7 @@ Tài liệu tham chiếu chi tiết cho skill `ux-copy`, cung cấp công thức
 
 ## 8. Thông báo nổi & Banner (Toasts & Inline Alerts)
 
-- **Toast:** Chỉ dùng cho phản hồi ngắn sau thao tác tức thì (`Đã sao chép liên kết` / `Link copied`, `Đã lưu vào thùng rác — Hoàn tác` / `Moved to trash — Undo`). Không nhét lỗi nghiêm trọng cần người dùng đọc kỹ hoặc điền thông tin vào toast tự tắt sau 3 giây.
+- **Toast:** Chỉ dùng cho phản hồi ngắn sau thao tác tức thì (`Đã sao chép liên kết` / `Link copied`; toast `Đã lưu vào thùng rác.` kèm nút `Hoàn tác`, tương đương `Moved to trash — Undo`). Không nhét lỗi nghiêm trọng cần người dùng đọc kỹ hoặc điền thông tin vào toast tự tắt sau 3 giây.
 - **Inline Banner:** Dùng cho cảnh báo trạng thái hệ thống hoặc quyền lợi gắn với màn hình hiện tại (`Gói dùng thử còn 3 ngày.` / `Your trial ends in 3 days.`) kèm đúng 1 hành động chính nếu cần.
 
 ---
@@ -155,7 +156,7 @@ Trước khi sửa câu chữ một đoạn microcopy yếu, kiểm tra xem thà
 | **Helper text lặp Label/Placeholder** | Label: `Email nhận hóa đơn` + Helper: `Nhập địa chỉ email để nhận hóa đơn.` | `[Xóa bỏ]` helper thừa; chỉ giữ helper khi cần ràng buộc định dạng hoặc quyền riêng tư. |
 | **Tooltip trùng nhãn nút có chữ** | `<button title="Xuất PDF">Xuất PDF</button>` | Gỡ thuộc tính `title` lặp chữ (chỉ giữ tooltip khi nút không có chữ hoặc bổ sung phím tắt/hệ quả). |
 | **Chỉ dẫn thao tác cơ học hiển nhiên** | `Nhấn nút Lưu bên dưới để lưu thông tin.` | `[Xóa bỏ]` câu chỉ dẫn vị trí nút; bản thân CTA đã tự giải thích. |
-| **Modal xác nhận cho việc dễ hoàn tác** | Bật modal hỏi xác nhận khi lưu trữ ghi chú hoặc bỏ ghim | Đề xuất bỏ modal, thực hiện trực tiếp kèm toast `Đã lưu trữ — Hoàn tác` / `Archived — Undo`. |
+| **Modal xác nhận cho việc dễ hoàn tác** | Bật modal hỏi xác nhận khi lưu trữ ghi chú hoặc bỏ ghim | Đề xuất bỏ modal, thực hiện trực tiếp kèm toast `Đã lưu trữ.` + nút `Hoàn tác` (EN: `Archived — Undo`). |
 
 ### 11.2. Giới hạn độ dài & Độ phình chữ Việt – Anh (Text Expansion)
 
@@ -164,6 +165,7 @@ Tiếng Việt có dấu và cụm từ ghép thường dài hơn tiếng Anh t�
 - Ưu tiên giữ cặp `[Động từ + Đối tượng cốt lõi]` súc tích hoặc danh từ ngắn rõ nghĩa thay vì dịch đủ từng từ tính từ/bổ ngữ từ tiếng Anh.
 - Tránh để CSS cắt cụt (`text-overflow: ellipsis`) làm mất động từ khóa hoặc đối tượng phân biệt giữa hai nút cạnh nhau (ví dụ hai tab đều bị cắt thành `Thanh toán hàng…`).
 - Khi chỉnh sửa trong JSX/TSX, nếu nhãn chuẩn vẫn có nguy cơ tràn khung hẹp đang gắn sẵn (`w-24`, `max-w-*`), ưu tiên rút gọn copy nhất quán và ghi chú kiểm tra hiển thị.
+- **Ngân sách độ dài mềm khi viết mới** (ước lượng tham chiếu, không phải giới hạn cứng): nút và tab ≤ 20 ký tự (tab hẹp ≤ 12), toast 1 dòng (~50 ký tự), tooltip ≤ 2 câu, tiêu đề empty state ≤ 50 ký tự. Vượt ngưỡng thì rút gọn chính copy trước, đừng dựa vào `truncate` của CSS để giấu chữ thừa.
 
 ---
 
